@@ -86,6 +86,10 @@ class ProcessSitemaps
 
     /**
      * Looks for duplicate paths down the line and puts them together
+     * We loop throught each url, grab the location and look for duplicates
+     * in another loop, O n squared, not very efficient.
+     * If we find duplicates we build the xml under the same loc node.
+     * The xml is been built in the $contents string.
      *
      * @param array $urls
      * @return void
@@ -152,7 +156,7 @@ class ProcessSitemaps
 
     /**
      * Gets the urls from a sitemap and returns an array containing
-     * store, path, lastmod, changefreq and priority
+     * store, path, host, lastmod, changefreq and priority
      *
      * @param string $sitemap
      * @return array
