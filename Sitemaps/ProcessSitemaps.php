@@ -111,6 +111,7 @@ class ProcessSitemaps
                 }
             }
             $fullUrl = $urls[$i]["fullUrl"] ?? "";
+            $hostAndScheme = $urls[$i]["host"] ?? ""; // needed so that we can rebuild the duplicate urls with the right store code
             $lastMod = $urls[$i]["lastmod"] ?? null;
             $changeFreq = $urls[$i]["changefreq"] ?? null;
             $priority = $urls[$i]["priority"] ?? null;
@@ -118,7 +119,7 @@ class ProcessSitemaps
             if ($otherStoresHaveSameUrl){
                 $this->setContents("<url><loc>$fullUrl</loc>");
                 foreach($otherStoresHaveSameUrl as $store){
-                    $this->setContents(sprintf($this->getHrefLangFormatMultiple(), $this->getHrefLangFromStoreCode($store), $fullUrl ));
+                    $this->setContents(sprintf($this->getHrefLangFormatMultiple(), $this->getHrefLangFromStoreCode($store), $hostAndScheme."/".$store."/".$path ));
                 }
             } else {
                 $this->setContents(sprintf($this->getHrefLangFormatSingle(), $fullUrl, $this->getHrefLangFromStoreCode($urls[$i]["store"]), $fullUrl));
@@ -173,7 +174,8 @@ class ProcessSitemaps
                     $urlPath = parse_url($childNode->nodeValue, PHP_URL_PATH); // get url path
                     preg_match('/^\/([^\/]*)./', $urlPath, $matches); // find the store code
                     $urlPathWithoutCode = str_replace($matches[0], "", $urlPath); // get the path without store code
-                    $item = array_merge($item, ["store" => $matches[1], "path" => $urlPathWithoutCode, "fullUrl" => $childNode->nodeValue]);
+                    $hostAndScheme = str_replace($urlPath, "", $childNode->nodeValue);
+                    $item = array_merge($item, ["store" => $matches[1], "path" => $urlPathWithoutCode, "fullUrl" => $childNode->nodeValue, "host" => $hostAndScheme]);
 
                 }
                 if ($childNode->nodeName == 'lastmod') {
