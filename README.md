@@ -8,8 +8,8 @@
 ## Goals
 
 * This module aims to merge multiple sitemaps from different stores on a magento multistore instance.
-* If a same product have different skus but same path across stores then we use the hreflang atribute to tell google that it is the same product.
-
+* If the same product has a different  sku on each store in which its sold but the same Url then Magento doesn’t have the ability to correctly generate the right Href lang tags in the sitemap.  
+  This plugin will resolve this and correctly tell google which  is the correct site for the correct visitor using the Href-Lang markup.
 ## How it works
 
 * This module expects all sitemaps to be in pub/media/ and start with "sitemap"
