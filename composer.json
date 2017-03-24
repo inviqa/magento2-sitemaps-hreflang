@@ -1,0 +1,22 @@
+{
+  "name": "inviqa/sitemapshreflang",
+  "description": "Inviqa - SitemapsHreflang Component",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "minimum-stability": "dev",
+  "require": {
+    "php": "~7.0.0|7.1.0"
+  },
+  "config": {
+    "bin-dir": "bin",
+    "use-include-path": true
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Inviqa\\SitemapsHreflang\\": ""
+    }
+  }
+}
