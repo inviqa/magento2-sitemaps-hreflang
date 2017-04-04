@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: claudicreanga
- * Date: 17/03/2017
- * Time: 11:16
- */
-
 namespace Inviqa\SitemapsHreflang\Sitemaps;
 
 use Inviqa\SitemapsHreflang\Logger\Logger;

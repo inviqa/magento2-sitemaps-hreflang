@@ -12,6 +12,7 @@ use Inviqa\SitemapsHreflang\Sitemaps\Paths;
 use Inviqa\SitemapsHreflang\Logger\Logger;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Filesystem;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 /**
  * Class WriteIndexSitemap
@@ -47,9 +48,9 @@ class WriteIndexSitemap
         Paths $paths,
         Filesystem $filesystem
     ) {
-        $this->filesystem = $filesystem;
         $this->paths = $paths;
         $this->logger = $logger;
+        $this->filesystem = $filesystem;
     }
 
     /**
@@ -60,8 +61,8 @@ class WriteIndexSitemap
      */
     public function writeFile(string $contents)
     {
-        $writer = $this->filesystem->getDirectoryWrite("media");
-        $file = $writer->openFile("indexSitemap.xml", 'w');
+        $writer = $this->filesystem->getDirectoryWrite(DirectoryList::PUB);
+        $file = $writer->openFile($this->paths->getConfigurationNewSitemapPath()."/".$this->paths->getConfigurationSitemapName().".xml", 'w');
 
         try {
             $file->lock();

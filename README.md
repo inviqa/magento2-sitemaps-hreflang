@@ -12,7 +12,7 @@
   This plugin will resolve this and correctly tell google which  is the correct site for the correct visitor using the Href-Lang markup.
 ## How it works
 
-* This module expects all sitemaps to be in pub/media/ and start with "sitemap"
+* This module expects by default all sitemaps to be in pub/media/ and start with word "sitemap". However this can be changed in configuration (the module will create the path if it doesn't exist).
 * Then it will merge the sitemaps found there and create a new file called indexSitemap.xml
 * The module runs based on a cron early in the morning
 

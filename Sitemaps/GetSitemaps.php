@@ -47,6 +47,7 @@ class GetSitemaps
     ) {
         $this->paths = $paths;
         $this->logger = $logger;
+        $this->paths->createDirectoriesIfTheyDontExist();
         $this->checkFilesToProcess();
     }
 
@@ -55,7 +56,7 @@ class GetSitemaps
      */
     public function checkFilesToProcess()
     {
-        $allFilesInIntegrationFolder = glob($this->paths->getMediaFolderPath().'/sitemap*.xml');
+        $allFilesInIntegrationFolder = glob($this->paths->getExistingSitemapPath().'/sitemap*.xml');
         $this->setSiteMaps($allFilesInIntegrationFolder);
     }
 

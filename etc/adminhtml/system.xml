@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="inviqa_sitemapshreflang" sortOrder="2000">
+            <label>Inviqa</label>
+        </tab>
+        <section id="inviqa_sitemapshreflang" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sitemap Hreflang</label>
+            <tab>inviqa_sitemapshreflang</tab>
+            <resource>Inviqa_SitemapsHreflang::stores</resource>
+            <group id="general" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="path" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Existing sitemaps path</label>
+                    <comment>Where to look for existing sitemaps to merge. Ex.: media/ The pub folder is assumed.</comment>
+                </field>
+                <field id="newpath" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>New index sitemap path</label>
+                    <comment>Where the new file should be created. Ex.: media/. The pub folder is assumed. </comment>
+                </field>
+                <field id="name" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>String in the sitemap filename</label>
+                    <comment>We look for filenames starting with this string. The ending .xml is assumed. </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
