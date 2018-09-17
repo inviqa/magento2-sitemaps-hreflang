@@ -134,7 +134,7 @@ class ProcessSitemaps
                 foreach ($images as $image){
                     $this->setContents("<image:image>");
                     foreach($image as $key => $value){
-                        if($key == "image:title"){
+                        if($key == "image:title" || $key == "image:caption"){
                             $value = str_replace('&', ' &amp;', $value);
                         }
                         $this->setContents("<".$key.">".$value."</".$key.">");
